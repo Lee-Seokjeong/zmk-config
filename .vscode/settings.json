@@ -1,0 +1,34 @@
+{
+  "files.associations": {
+    "*.overlay": "dts",
+    "*.keymap": "dts"
+  },
+  "python.formatting.provider": "black",
+  "[c]": {
+    "editor.formatOnSave": true
+  },
+  "[javascript][javascriptreact][typescript][typescriptreact]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "ms-python.python"
+  },
+  "[css][json][jsonc][html][markdown][yaml]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorCustomizations": {
+    "panel.border": "#cb4d85",
+    "sash.hoverBorder": "#cb4d85",
+    "sideBar.border": "#cb4d85",
+    "statusBar.background": "#b1346c",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#cb4d85",
+    "statusBarItem.remoteBackground": "#b1346c",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "tab.activeBorder": "#cb4d85"
+  },
+  "peacock.remoteColor": "#b1346c"
+}

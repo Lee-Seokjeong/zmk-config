@@ -95,6 +95,6 @@ target_sources(app PRIVATE src/main.c)
 
 add_subdirectory(src/display/)
 add_subdirectory(config/drivers/sensor/trackball_pim447/)
-add_subdirectory(config/dts/bindings/zmk/)
+add_subdirectory(config/dts/bindings/behaviors/)
 
 zephyr_cc_option(-Wfatal-errors)

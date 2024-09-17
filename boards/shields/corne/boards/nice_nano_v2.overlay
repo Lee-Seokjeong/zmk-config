@@ -63,7 +63,7 @@
         scroll-divisor = <1>;
         invert-scroll-x;
         invert-scroll-y;
-        mode = <1>;
+        mode = <PIM447_SCROLL>;
     };
 };
 

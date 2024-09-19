@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.13.1)
 
 set(CONFIG_APPLICATION_DEFINED_SYSCALL true)
-list(APPEND BOARD_ROOT ${CMAKE_SOURCE_DIR}/boards/)
+list(APPEND BOARD_ROOT ${CMAKE_SOURCE_DIR}/zmk-config/boards/)
 list(APPEND DTS_ROOT ${CMAKE_SOURCE_DIR})
 
 # Add our custom Zephyr module for drivers w/ syscalls, etc.

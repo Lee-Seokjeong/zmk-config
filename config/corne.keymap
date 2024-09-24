@@ -43,6 +43,32 @@
 	};
 
 / {
+    behaviors {
+		COMPOSE_MACRO(agrav, GRAVE, A)
+		COMPOSE_MACRO(acirc, CARET, A)
+		COMPOSE_MACRO(egrav, GRAVE, E)
+		COMPOSE_MACRO(ecute, SQT,   E)
+		COMPOSE_MACRO(ecirc, CARET, E)
+		COMPOSE_MACRO(ediae, BSLH,  E)
+		COMPOSE_MACRO(icirc, CARET, I)
+		COMPOSE_MACRO(idiae, BSLH,  I)
+		COMPOSE_MACRO(ocirc, CARET, O)
+		COMPOSE_MACRO(ugrav, GRAVE, U)
+		COMPOSE_MACRO(ucirc, CARET, U)
+		COMPOSE_MACRO(udiae, BSLH,  U)
+		COMPOSE_MACRO(ccedi, COMMA, C)
+
+		COMPOSE_MACRO2(aelig, A, E)
+		COMPOSE_MACRO2(oelig, O, E)
+
+		COMPOSE_MACRO(nbspc,  SPACE, SPACE)
+		COMPOSE_MACRO(foquo,  LT,    LT)
+		COMPOSE_MACRO(fcquo,  GT,    GT)
+		COMPOSE_MACRO(bullet, DOT,   EQUAL)
+		COMPOSE_MACRO(emdash, MINUS, MINUS)
+		COMPOSE_MACRO(mult,   X,     X)
+		COMPOSE_MACRO(sqrt,   V,     SLASH)
+	};
     keymap {
         compatible = "zmk,keymap";
 

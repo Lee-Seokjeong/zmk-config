@@ -49,7 +49,7 @@
 &pro_micro_i2c {
     compatible = "nordic,nrf-i2c";
     status = "okay";
-    pinctrl-0 = <&i2c_default>;
+    pinctrl-0 = <&i2c0_default>;
 
     trackball_pim447@a {
         compatible = "pimoroni,trackball_pim447";

@@ -65,22 +65,8 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10
 
 &pro_micro_i2c {
 	status = "okay";
-	trackball_pim447@a {
-		compatible = "pimoroni,trackball_pim447";
-		reg = <0xa>;
-		label = "TRACKBALL_PIM447";
-		move-factor = <2>;      // Increase pointer velocity (default: 1)
-		invert-move-x;          // Invert pointer X axis (left is right, and vice versa)
-		invert-move-y;          // Invert pointer Y axis (up is down, and vice versa)
-		button = <1>;           // Send right-click when pressing the ball (default: 0, ie. left-click)
-		swap-axes;              // Swap X and Y axes (horizontal is vertical, and vice versa)
-		scroll-divisor = <1>;   // Increase wheel velocity (default: 2)
-		invert-scroll-x;        // Invert wheel X axis (left is right, and vice versa)
-		invert-scroll-y;        // Invert wheel Y axis (up is down, and vice versa)
-		mode = <PIM447_SCROLL>; // Act as mouse wheels at startup (default: PIM447_MOVE for a pointer)
-	};
 
-        oled: ssd1306@3c {
+	oled: ssd1306@3c {
             compatible = "solomon,ssd1306fb";
             reg = <0x3c>;
             width = <128>;
@@ -94,5 +80,11 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10
             com-sequential;
             inversion-on;
             prechargep = <0x22>;
-        };
+	};
+        
+        trackball_pim447@a {
+	    compatible = "pimoroni,trackball_pim447";
+	    reg = <0xa>;
+	    label = "TRACKBALL_PIM447";
+	};
 };

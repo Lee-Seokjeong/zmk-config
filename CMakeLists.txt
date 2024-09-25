@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.13.1)
 
 set(CONFIG_APPLICATION_DEFINED_SYSCALL true)
 
-set(BOARD_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/boards")
+set(BOARD_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/zmk-config/config/boards")
 
 message(STATUS "BOARD_ROOT: ${BOARD_ROOT}")
 

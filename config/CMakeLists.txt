@@ -135,7 +135,6 @@ target_sources(config PRIVATE drivers/sensor/trackball_pim447/trackball_pim447.c
 target_sources(config PRIVATE src/mouse/trackball_pim447.c)
 target_sources(config PRIVATE src/behaviors/behavior_trackball_pim447.c)
 
-add_subdirectory(src/display/)
 add_subdirectory(config/drivers/sensor/trackball_pim447/)
 add_subdirectory(config/dts/bindings/behaviors/)
 

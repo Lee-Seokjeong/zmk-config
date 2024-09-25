@@ -1,15 +1,16 @@
 cmake_minimum_required(VERSION 3.13.1)
 
 set(CONFIG_APPLICATION_DEFINED_SYSCALL true)
+
+set(ZEPHYR_EXTRA_MODULES "${ZMK_EXTRA_MODULES};${CMAKE_CURRENT_SOURCE_DIR}/module;${CMAKE_CURRENT_SOURCE_DIR}/keymap-module")
+
 list(APPEND BOARD_ROOT ${CMAKE_SOURCE_DIR}/zmk-config/config/boards/)
 list(APPEND DTS_ROOT ${CMAKE_SOURCE_DIR}/zmk-config/config/boards/)
 
 # Add our custom Zephyr module for drivers w/ syscalls, etc.
-list(APPEND DTS_ROOT ${CMAKE_SOURCE_DIR}/drivers/zephyr)
+list(APPEND DTS_ROOT ${CMAKE_SOURCE_DIR}/zmk-config/config/drivers)
 
-list(APPEND ZEPHYR_EXTRA_MODULES
-  ${CMAKE_CURRENT_SOURCE_DIR}/drivers
-)
+list(APPEND ZEPHYR_EXTRA_MODULES ${CMAKE_CURRENT_SOURCE_DIR}/drivers)
 
 include(cmake/zmk_config.cmake)
 
@@ -17,7 +18,15 @@ include(cmake/zmk_config.cmake)
 find_package(Zephyr REQUIRED HINTS ../zephyr)
 project(zmk)
 
+zephyr_linker_sources(SECTIONS include/linker/zmk-behaviors.ld)
 zephyr_linker_sources(RODATA include/linker/zmk-events.ld)
+
+if(CONFIG_ZMK_BEHAVIOR_LOCAL_IDS)
+  zephyr_linker_sources(DATA_SECTIONS include/linker/zmk-behavior-local-id-map.ld)
+endif()
+
+zephyr_syscall_header(${APPLICATION_SOURCE_DIR}/include/drivers/behavior.h)
+zephyr_syscall_header(${APPLICATION_SOURCE_DIR}/include/drivers/ext_power.h)
 
 # Add your source file to the "app" target. This must come after
 # find_package(Zephyr) which defines the target.
@@ -102,6 +111,5 @@ target_sources(config PRIVATE src/behaviors/behavior_trackball_pim447.c)
 add_subdirectory(src/display/)
 add_subdirectory(config/drivers/sensor/trackball_pim447/)
 add_subdirectory(config/dts/bindings/behaviors/)
-
 
 zephyr_cc_option(-Wfatal-errors)

@@ -1,3 +1,6 @@
+# 현재 디렉토리의 상위 디렉토리를 BOARD_ROOT로 설정
+set(BOARD_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../..")
+
 set_property(GLOBAL APPEND PROPERTY extra_post_build_commands
   COMMAND ${PYTHON_EXECUTABLE} ${ZEPHYR_BASE}/../tools/uf2/utils/uf2conv.py
   -c 
@@ -6,5 +9,3 @@ set_property(GLOBAL APPEND PROPERTY extra_post_build_commands
   -o ${PROJECT_BINARY_DIR}/${CONFIG_KERNEL_BIN_NAME}.uf2
   ${PROJECT_BINARY_DIR}/${CONFIG_KERNEL_BIN_NAME}.bin
 )
-# 현재 디렉토리의 상위 디렉토리를 BOARD_ROOT로 설정
-set(BOARD_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../..")

@@ -45,11 +45,10 @@
 &pro_micro_i2c {
     compatible = "nordic,nrf-i2c";
     status = "okay";
-    pinctrl-0 = <&i2c_default>;
-
+   
     trackball_pim447@a {
         compatible = "pimoroni,trackball_pim447";
-        reg = <0x0a>; /* I2C address */
+        reg = <0xa>; /* I2C address */
         label = "TRACKBALL_PIM447";
         move-factor = <2>;
         invert-move-x;
@@ -60,8 +59,8 @@
         invert-scroll-x;
         invert-scroll-y;
         mode = <1>;
-    };
-};
+      };
+  };
 
 / {
     chosen {

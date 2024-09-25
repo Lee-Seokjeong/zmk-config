@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 3.13.1)
 
 set(CONFIG_APPLICATION_DEFINED_SYSCALL true)
 
-set(BOARD_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/zmk-config/config/boards/arm")
+set(BOARD_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/zmk-config/config")
 
 set(ZEPHYR_EXTRA_MODULES "${ZMK_EXTRA_MODULES};${CMAKE_CURRENT_SOURCE_DIR}/module;${CMAKE_CURRENT_SOURCE_DIR}/keymap-module")
 
 # Find Zephyr. This also loads Zephyr's build system.
-find_package(Zephyr REQUIRED HINTS /zmk-config/config/boards/zephyr)
+find_package(Zephyr REQUIRED HINTS ../zephyr)
 project(zmk)
 
 zephyr_linker_sources(SECTIONS include/linker/zmk-behaviors.ld)

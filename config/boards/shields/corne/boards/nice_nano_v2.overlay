@@ -16,7 +16,7 @@
         };
     };
 
- };
+};
 
 &spi3 {
     compatible = "nordic,nrf-spim";
@@ -43,8 +43,7 @@
 };
 
 &pro_micro_i2c {
-    compatible = "nordic,nrf-i2c";
-    status = "okay";
+       status = "okay";
    
     trackball_pim447@a {
         compatible = "pimoroni,trackball_pim447";

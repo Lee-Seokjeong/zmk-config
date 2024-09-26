@@ -10,6 +10,8 @@ manifest:
     - name: zmk-config
       remote: Lee-Seokjeong
       revision: master
+  self:
+    path: config
       
     - name: zmk
       remote: zmkfirmware

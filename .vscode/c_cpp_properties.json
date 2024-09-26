@@ -4,8 +4,8 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/zmk-config/config/boards",
-                "${workspaceFolder}/zmk-config/config/boards/shields/corne/boards",
+                "${workspaceFolder}/zmk-config/config",
+                "${workspaceFolder}/zmk-config/config/boards/shields/corne",
                 "${workspaceFolder}/zmk-config/config/drivers",
                 "${workspaceFolder}/zmk-config/config/src",
                 "${workspaceFolder}/zmk-config/config/include"

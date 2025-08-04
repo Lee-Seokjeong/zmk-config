@@ -5,7 +5,7 @@ manifest:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
     - name: pim447
-      url-base: https://github.com/t0bybr/pim447
+      url-base: https://github.com/t0bybr
    
   projects:
     - name: zmk
@@ -13,7 +13,7 @@ manifest:
       import: app/west.yml
 
     - name: pim447
-      remote: pim447
+      remote: t0bybr
       revision: main  
   self:
     path: config

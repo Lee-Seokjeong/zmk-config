@@ -1,5 +1,5 @@
 #include "corne.dtsi"
-#include <dt-bindings/zmk/pimoroni_pim447.h>
+#include <dt-bindings/pimoroni_pim447.h>
 
 &default_transform {
 	col-offset = <6>;

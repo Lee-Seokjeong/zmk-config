@@ -4,7 +4,7 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: zmk-driver-pim447
+    - name: mwandzik
       url-base: https://github.com/mwandzik
    
   projects:
@@ -14,7 +14,7 @@ manifest:
       import: app/west.yml
     # trackball
     - name: zmk-driver-pim447
-      remote: zmk-driver-pim447
+      remote: mwandzik
       revision: main
   self:
     path: config

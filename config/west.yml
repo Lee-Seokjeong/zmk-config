@@ -10,10 +10,11 @@ manifest:
   projects:
     - name: zmk
       remote: zmkfirmware
+      revision: main
       import: app/west.yml
 
     - name: zmk-driver-pim447
       remote: mwandzik
-      revision: main  
+      revision: main
   self:
     path: config

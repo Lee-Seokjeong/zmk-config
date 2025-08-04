@@ -5,7 +5,7 @@ manifest:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
     - name: pim447
-      url-base: https://github.com/t0bybr
+      url-base: https://github.com/t0bybr/pim447
    
   projects:
     - name: zmk

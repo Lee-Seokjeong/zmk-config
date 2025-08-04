@@ -4,7 +4,7 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: mwandzik
+    - name: zmk-driver-pim447
       url-base: https://github.com/mwandzik
    
   projects:

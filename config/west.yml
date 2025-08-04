@@ -4,16 +4,16 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: pim447
-      url-base: https://github.com/t0bybr
+    - name: zmk-driver-pim447
+      url-base: https://github.com/mwandzik
    
   projects:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
 
-    - name: pim447
-      remote: pim447
+    - name: zmk-driver-pim447
+      remote: zmk-driver-pim447
       revision: main  
   self:
     path: config

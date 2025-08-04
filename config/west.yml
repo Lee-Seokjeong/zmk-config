@@ -13,7 +13,7 @@ manifest:
       import: app/west.yml
 
     - name: pim447
-      remote: t0bybr
+      remote: pim447
       revision: main  
   self:
     path: config

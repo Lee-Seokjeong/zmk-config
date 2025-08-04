@@ -12,7 +12,7 @@ manifest:
       remote: zmkfirmware
       import: app/west.yml
 
-    - name: trackball_pim447
+    - name: pim447
       remote: pim447
       revision: main  
   self:

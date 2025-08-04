@@ -5,7 +5,7 @@ manifest:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
     - name: zmk-driver-pim447
-      url-base: https://github.com/mwandzik
+      url-base: https://github.com/mwandzik/zmk-driver-pim447
    
   projects:
     - name: zmk

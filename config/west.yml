@@ -15,6 +15,6 @@ manifest:
     # zmk-driver-pim447
     - name: zmk-driver-pim447
       remote: mwandzik
-      revision: master
+      revision: main
   self:
     path: config

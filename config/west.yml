@@ -12,7 +12,7 @@ manifest:
       remote: zmkfirmware
       revision: main
       import: app/west.yml
-    # trackball
+    # zmk-driver-pim447
     - name: zmk-driver-pim447
       remote: mwandzik
       revision: main

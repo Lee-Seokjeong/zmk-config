@@ -15,6 +15,6 @@ manifest:
     # trackball
     - name: mwandzik
       remote: zmk-driver-pim447
-      revision: main
+      revision: zmk-driver-pim447
   self:
     path: config

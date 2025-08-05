@@ -13,7 +13,7 @@ manifest:
       revision: main
       import: app/west.yml
     # trackball
-    - name: zmk-driver-pim447
+    - name: mwandzik
       remote: zmk-driver-pim447
       revision: main
   self:

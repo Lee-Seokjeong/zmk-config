@@ -1,5 +1,5 @@
 #include "corne.dtsi"
-#include <dt-bindings/zmk/trackball_pim447.h>
+#include <dt-bindings/behavior_pim447.h>
 
 &default_transform {
 	col-offset = <6>;
@@ -19,10 +19,10 @@
 &pro_micro_i2c {
   status = "okay";
 
-	pim447_trackball@a {
-		compatible = "pimoroni,trackball_pim447";
+	pim447@a {
+		compatible = "pimoroni,pim447";
 		reg = <0xa>;
-		label = "PIM447_TRACKBALL";
+		label = "PIM447";
 		swap-axes;
 		invert-move-x;
 		power-layer = <0>; /* MOUSE layer */

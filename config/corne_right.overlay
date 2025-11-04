@@ -1,4 +1,4 @@
-
+#include "corne.dtsi"
 
 &default_transform {
 	col-offset = <6>;
@@ -22,7 +22,7 @@
         compatible = "zmk,pimoroni-pim447";
         status = "okay";
 		reg = <0xa>;
-		label = "PIM447_PIM447";
+		label = "PIMORONI_PIM447";
 		swap-axes;
 		invert-move-x;
 		power-layer = <0>; /* MOUSE layer */

@@ -1,4 +1,4 @@
-#include "pimoroni_pim447.dtsi"
+
 
 &default_transform {
 	col-offset = <6>;

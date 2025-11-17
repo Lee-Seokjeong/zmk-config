@@ -5,6 +5,7 @@
  */
 
 #include "corne.dtsi"
+#include <dt-bindings/behavior_pim447.h>
 
 &default_transform {
     col-offset = <6>;

@@ -36,8 +36,8 @@
         compatible = "zmk,pimoroni-pim447";
         status = "okay";
         reg = <0xa>;
-		scl-pin = <31>;   // Example: P0.02
-        sda-pin = <29>;  // Example: P0.29
+		scl-pin = <29>;   // Example: P0.02
+        sda-pin = <31>;  // Example: P0.29
         int-gpios = <&pro_micro 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         automouse-layer = <2>;
 				

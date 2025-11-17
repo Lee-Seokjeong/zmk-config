@@ -34,9 +34,9 @@
     i2c0_default: i2c0_default {
         group {
             /* SDA (Serial Data) 핀 P0.29 */
-            psels = <NRF_PSEL(TWIM_SDA, 0, 29)>;
+            psels = <NRF_PSEL(TWIM_SDA, 0, 31)>;
             /* SCL (Serial Clock) 핀 P0.31 */
-            psels = <NRF_PSEL(TWIM_SCL, 0, 31)>;
+            psels = <NRF_PSEL(TWIM_SCL, 0, 29)>;
         };
     };
 };

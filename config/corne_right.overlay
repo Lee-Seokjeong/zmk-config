@@ -1,32 +1,26 @@
-// #include "corne.dtsi"
+/*
+ * Copyright (c) 2020 Pete Johanson
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include "corne.dtsi"
 
 &default_transform {
-	col-offset = <6>;
+    col-offset = <6>;
+};
+
+&five_column_transform {
+    col-offset = <6>;
 };
 
 &kscan0 {
-	col-gpios
-		= <&pro_micro 14 GPIO_ACTIVE_HIGH>
-		, <&pro_micro 15 GPIO_ACTIVE_HIGH>
-		, <&pro_micro 18 GPIO_ACTIVE_HIGH>
-		, <&pro_micro 19 GPIO_ACTIVE_HIGH>
-		, <&pro_micro 20 GPIO_ACTIVE_HIGH>
-		, <&pro_micro 21 GPIO_ACTIVE_HIGH>
-		;
-};
-
-&pro_micro_i2c {
-  status = "okay";
-
-	pimoroni_pim447: pimoroni_pim447@a {
-        compatible = "zmk,pimoroni-pim447";
-        status = "okay";
-		reg = <0xa>;
-		label = "PIMORONI_PIM447";
-		swap-axes;
-		invert-move-x;
-		power-layer = <0>; /* MOUSE layer */
-		//idle-timeout = <10>; /* in seconds */
-		               
-	};
+    col-gpios
+        = <&pro_micro 14 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 15 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 18 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 19 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 20 GPIO_ACTIVE_HIGH>
+        , <&pro_micro 21 GPIO_ACTIVE_HIGH>
+        ;
 };

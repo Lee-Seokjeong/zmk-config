@@ -26,18 +26,25 @@
         ;
 };
 
-&pro_micro_i2c {
+/* nice!nano v2의 I2C 컨트롤러(&i2c0) 설정 */
+&i2c0 {
     status = "okay";
-    clock-frequency = <I2C_BITRATE_FAST>;
-    // I2C_BITRATE_STANDARD   100000
-    // I2C_BITRATE_FAST   400000
     
+    /* SDA 핀: P0.29 (사진상 기본) */
+    sda-pin = <29>; 
+    /* SCL 핀: P0.31 (사진상 기본) */
+    scl-pin = <31>;
+
+    /* PIM447 트랙볼 장치 정의 */
     pimoroni_pim447: pimoroni_pim447@a {
         compatible = "zmk,pimoroni-pim447";
         status = "okay";
-        reg = <0xa>;
-		int-gpios = <&pro_micro 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
-        automouse-layer = <2>;
-				
+        reg = <0xa>; /* PIM447의 기본 I2C 주소 0x0A */
+		
+        /* 
+         * 인터럽트(INT) 핀 설정은 사용하지 않음 (제외됨).
+         */
+        
+        automouse-layer = <2>; /* 레이어 2에서 마우스 자동 활성화 */
 	 };
 };

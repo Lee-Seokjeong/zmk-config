@@ -6,7 +6,6 @@
 
 #include "corne.dtsi"
 #include <dt-bindings/behavior_pim447.h>
-#include <dt-bindings/zmk/colors.h>
 
 &default_transform {
     col-offset = <6>;
@@ -68,10 +67,5 @@
          */
         color = <0x0000ff00>; // RGBW: 파란색
 
-        /* 
-         * 마우스 모드 진입(레이어 2 활성화) 시 색상 설정: 녹색
-         * ZMK_PIM447_LED_GREEN은 behavior_pim447.h에 정의되어 있습니다.
-         */
-        automouse-color = <ZMK_PIM447_LED_GREEN>;
-	 };
+      };
 };

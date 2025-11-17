@@ -45,23 +45,20 @@
 /* I2C 컨트롤러 설정 */
 &i2c0 {
     status = "okay";
-    /* pinctrl 속성을 사용하여 위에서 정의한 핀 그룹을 참조합니다. */
     pinctrl-0 = <&i2c0_default>;
     
-    /* 
-     * NOTE: 'pinctrl-pull-ups' 속성은 이 버전의 Zephyr에서 지원하지 않아 제거했습니다.
-     * I2C 통신을 위해서는 하드웨어에 물리적인 풀업 저항이 필요합니다.
-     */
-
     /* PIM447 트랙볼 장치 정의 */
     pimoroni_pim447: pimoroni_pim447@a {
         compatible = "zmk,pimoroni-pim447";
         status = "okay";
         reg = <0xa>; /* PIM447의 기본 I2C 주소 0x0A */
 		
-        /* 인터럽트(INT) 핀 설정은 사용하지 않음 */
+        /* 
+         * 바인딩이 'int-gpios'를 필수로 요구하므로 다시 추가합니다.
+         * nice!nano의 D4 핀 (GPIO P0.28)을 INT 핀으로 사용합니다.
+         */
+        int-gpios = <&gpio0 28 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         
         automouse-layer = <2>; /* 레이어 2에서 마우스 자동 활성화 */
 	 };
 };
-

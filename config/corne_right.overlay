@@ -28,7 +28,7 @@
 
 /* 
  * I2C 핀 정의를 위한 pinctrl 노드 추가:
- * 이 섹션은 P0.29를 SDA로, P0.31을 SCL로 사용하도록 설정합니다.
+ * P0.29를 SDA로, P0.31을 SCL로 사용하도록 설정합니다.
  */
 &pinctrl {
     i2c0_default: i2c0_default {
@@ -47,7 +47,11 @@
     status = "okay";
     /* pinctrl 속성을 사용하여 위에서 정의한 핀 그룹을 참조합니다. */
     pinctrl-0 = <&i2c0_default>;
-    pinctrl-pull-ups = <&i2c0_default>;
+    
+    /* 
+     * NOTE: 'pinctrl-pull-ups' 속성은 이 버전의 Zephyr에서 지원하지 않아 제거했습니다.
+     * I2C 통신을 위해서는 하드웨어에 물리적인 풀업 저항이 필요합니다.
+     */
 
     /* PIM447 트랙볼 장치 정의 */
     pimoroni_pim447: pimoroni_pim447@a {
@@ -60,3 +64,4 @@
         automouse-layer = <2>; /* 레이어 2에서 마우스 자동 활성화 */
 	 };
 };
+

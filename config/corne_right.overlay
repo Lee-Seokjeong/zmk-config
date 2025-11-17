@@ -26,14 +26,28 @@
         ;
 };
 
-/* nice!nano v2의 I2C 컨트롤러(&i2c0) 설정 */
+/* 
+ * I2C 핀 정의를 위한 pinctrl 노드 추가:
+ * 이 섹션은 P0.29를 SDA로, P0.31을 SCL로 사용하도록 설정합니다.
+ */
+&pinctrl {
+    i2c0_default: i2c0_default {
+        group {
+            /* SDA (Serial Data) 핀 P0.29 */
+            psels = <NRF_PSEL(TWIM_SDA, 0, 29)>;
+            /* SCL (Serial Clock) 핀 P0.31 */
+            psels = <NRF_PSEL(TWIM_SCL, 0, 31)>;
+        };
+    };
+};
+
+
+/* I2C 컨트롤러 설정 */
 &i2c0 {
     status = "okay";
-    
-    /* SDA 핀: P0.29 (사진상 기본) */
-    sda-pin = <29>; 
-    /* SCL 핀: P0.31 (사진상 기본) */
-    scl-pin = <31>;
+    /* pinctrl 속성을 사용하여 위에서 정의한 핀 그룹을 참조합니다. */
+    pinctrl-0 = <&i2c0_default>;
+    pinctrl-pull-ups = <&i2c0_default>;
 
     /* PIM447 트랙볼 장치 정의 */
     pimoroni_pim447: pimoroni_pim447@a {
@@ -41,9 +55,7 @@
         status = "okay";
         reg = <0xa>; /* PIM447의 기본 I2C 주소 0x0A */
 		
-        /* 
-         * 인터럽트(INT) 핀 설정은 사용하지 않음 (제외됨).
-         */
+        /* 인터럽트(INT) 핀 설정은 사용하지 않음 */
         
         automouse-layer = <2>; /* 레이어 2에서 마우스 자동 활성화 */
 	 };

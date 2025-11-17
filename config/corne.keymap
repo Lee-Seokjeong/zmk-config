@@ -15,9 +15,12 @@
 
 / {
          behaviors {
-        tb_pim447: trackball_pimoroni_pim447 {
+         tb_pim447: trackball_pimoroni_pim447 {
             compatible = "zmk,behavior-pim447";
             #binding-cells = <1>;
+         /* Optional LED colors for each mode (see trackball_pim447.h) */
+            led-mode-move = <2>;   /* Green (LED_GREEN) */
+            led-mode-scroll = <3>; /* Blue (LED_BLUE) */
         };
     };
         keymap {

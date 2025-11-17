@@ -60,5 +60,17 @@
         int-gpios = <&gpio0 28 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         
         automouse-layer = <2>; /* 레이어 2에서 마우스 자동 활성화 */
+
+		/* 
+         * --- LED 색상 설정 추가 ---
+         * 기본 색상: 파란색 (키보드 일반 사용 시)
+         */
+        color = <0x0000ff00>; // RGBW: 파란색
+
+        /* 
+         * 마우스 모드 진입(레이어 2 활성화) 시 색상 설정: 녹색
+         * ZMK_PIM447_LED_GREEN은 behavior_pim447.h에 정의되어 있습니다.
+         */
+        automouse-color = <ZMK_PIM447_LED_GREEN>;
 	 };
 };

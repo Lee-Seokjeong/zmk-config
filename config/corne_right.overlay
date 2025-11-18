@@ -28,15 +28,15 @@
 
 /* 
  * I2C 핀 정의를 위한 pinctrl 노드 추가:
- * P0.29를 SDA로, P0.31을 SCL로 사용하도록 설정합니다.
+ * P0.17를 SDA로, P0.20을 SCL로 사용하도록 설정합니다.
  */
 &pinctrl {
     i2c0_default: i2c0_default {
         group {
-            /* SDA (Serial Data) 핀 P0.29 */
-            psels = <NRF_PSEL(TWIM_SDA, 0, 31)>;
-            /* SCL (Serial Clock) 핀 P0.31 */
-            psels = <NRF_PSEL(TWIM_SCL, 0, 29)>;
+            /* SDA (Serial Data) 핀 P0.17 */
+            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>;
+            /* SCL (Serial Clock) 핀 P0.20 */
+            psels = <NRF_PSEL(TWIM_SCL, 0, 20)>;
         };
     };
 };
@@ -55,9 +55,9 @@
 		
         /* 
          * 바인딩이 'int-gpios'를 필수로 요구하므로 다시 추가합니다.
-         * nice!nano의 D4 핀 (GPIO P0.28)을 INT 핀으로 사용합니다.
+         * nice!nano의 D4 핀 (GPIO P0.20)을 INT 핀으로 사용합니다.
          */
-        int-gpios = <&gpio0 28 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+        int-gpios = <&gpio0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         
         automouse-layer = <2>; /* 레이어 2에서 마우스 자동 활성화 */
 

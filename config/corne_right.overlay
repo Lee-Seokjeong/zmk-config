@@ -30,24 +30,6 @@
         ;
 };
 
-/* 
- * I2C 핀 정의를 위한 pinctrl 노드 추가:
- * P0.17를 SDA로, P0.20을 SCL로 사용하도록 설정합니다.
- * 이 설정은 기본 nice!nano I2C 핀과 일치합니다.
- 
-&pinctrl {
-    i2c0_default: i2c0_default {
-        group {
-            /* SDA (Serial Data) 핀 P0.17 */
-            psels = <NRF_PSEL(TWIM_SDA, 0, 17)>;
-            /* SCL (Serial Clock) 핀 P0.20 */
-            psels = <NRF_PSEL(TWIM_SCL, 0, 20)>;
- 
-        };
-    };
-};
-*/
-
 /* I2C 컨트롤러 설정 */
 &pro_micro_i2c {
     status = "okay";

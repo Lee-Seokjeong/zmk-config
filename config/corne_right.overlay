@@ -42,6 +42,7 @@
             psels = <NRF_PSEL(TWIM_SDA, 0, 17)>;
             /* SCL (Serial Clock) 핀 P0.20 */
             psels = <NRF_PSEL(TWIM_SCL, 0, 20)>;
+ */
         };
     };
 };

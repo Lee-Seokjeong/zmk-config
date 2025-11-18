@@ -16,6 +16,10 @@
 };
 
 &kscan0 {
+    /* 
+     * Pro Micro 핀 번호를 사용하는 col-gpios 설정.
+     * 14: D0/P0.08, 15: D1/P0.10, 18: D4/P0.22, 19: D5/P0.24, 20: D6/P0.28, 21: D7/P0.30
+     */
     col-gpios
         = <&pro_micro 14 GPIO_ACTIVE_HIGH>
         , <&pro_micro 15 GPIO_ACTIVE_HIGH>
@@ -29,6 +33,7 @@
 /* 
  * I2C 핀 정의를 위한 pinctrl 노드 추가:
  * P0.17를 SDA로, P0.20을 SCL로 사용하도록 설정합니다.
+ * 이 설정은 기본 nice!nano I2C 핀과 일치합니다.
  */
 &pinctrl {
     i2c0_default: i2c0_default {
@@ -54,10 +59,12 @@
         reg = <0xa>; /* PIM447의 기본 I2C 주소 0x0A */
 		
         /* 
-         * 바인딩이 'int-gpios'를 필수로 요구하므로 다시 추가합니다.
-         * nice!nano의 D4 핀 (GPIO P0.20)을 INT 핀으로 사용합니다.
+         * INT 핀 설정: 
+         * Corne 키보드의 기본 기능과 충돌하지 않는 
+         * nice!nano 중앙 하단의 P1.07 핀을 사용합니다.
+         * (물리적으로 P1.07 핀에 연결해야 합니다.)
          */
-        int-gpios = <&gpio0 20 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+        int-gpios = <&gpio1 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         
         automouse-layer = <2>; /* 레이어 2에서 마우스 자동 활성화 */
 

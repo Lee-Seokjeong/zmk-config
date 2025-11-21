@@ -4,8 +4,11 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include "corne.dtsi"
+// corne.dtsi 파일을 import하는 경우, 해당 파일은 그대로 둡니다.
+// #include "corne.dtsi" 
 #include <dt-bindings/behavior_pim447.h>
+// #include <dt-bindings/zmk/mouse.h> // keymap에 이미 포함되어 있을 수 있습니다.
+
 
 &default_transform {
     col-offset = <6>;
@@ -18,7 +21,6 @@
 &kscan0 {
     /* 
      * Pro Micro 핀 번호를 사용하는 col-gpios 설정.
-     * 14: D0/P0.08, 15: D1/P0.10, 18: D4/P0.22, 19: D5/P0.24, 20: D6/P0.28, 21: D7/P0.30
      */
     col-gpios
         = <&pro_micro 14 GPIO_ACTIVE_HIGH>
@@ -43,14 +45,10 @@
 		
         /* 
          * INT 핀 설정: 
-         * Corne 키보드의 기본 기능과 충돌하지 않는 
-         * nice!nano 중앙 하단의 P1.07 핀을 사용합니다.
          * (물리적으로 P1.07 핀에 연결해야 합니다.)
          */
         int-gpios = <&gpio1 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         
-        automouse-layer = <2>; /* 레이어 2에서 마우스 자동 활성화 */
-
+        // automouse-layer = <2>; /* <-- 이 줄을 제거하거나 주석 처리하세요 */
       };
 };
-

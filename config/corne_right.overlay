@@ -40,7 +40,7 @@
     pimoroni_pim447: pimoroni_pim447@a {
         compatible = "zmk,pimoroni-pim447";
         status = "okay";
-        reg = <0xa>; /* PIM447의 기본 I2C 주소 0x0A */
+        reg = <0x0a>; /* PIM447의 기본 I2C 주소 0x0A */
 		
         /* 
          * INT 핀 설정: 

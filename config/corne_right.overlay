@@ -4,10 +4,9 @@
  * SPDX-License-Identifier: MIT
  */
 
-// corne.dtsi 파일을 import하는 경우, 해당 파일은 그대로 둡니다.
 #include "corne.dtsi" 
 #include <dt-bindings/behavior_pim447.h>
-// #include <dt-bindings/zmk/mouse.h> // keymap에 이미 포함되어 있을 수 있습니다.
+#include <dt-bindings/zmk/mouse.h> // keymap에 이미 포함되어 있을 수 있습니다.
 
 
 &default_transform {
@@ -49,6 +48,6 @@
          */
         int-gpios = <&gpio1 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         
-        // automouse-layer = <2>; /* <-- 이 줄을 제거하거나 주석 처리하세요 */
+        automouse-layer = <2>; /* <-- 이 줄을 제거하거나 주석 처리하세요 */
       };
 };

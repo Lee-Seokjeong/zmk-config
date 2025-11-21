@@ -4,8 +4,8 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: t0bybr
-      url-base: https://github.com/t0bybr
+    - name: Lee-Seokjeong
+      url-base: https://github.com/Lee-Seokjeong
    
   projects:
     - name: zmk
@@ -14,7 +14,7 @@ manifest:
       import: app/west.yml
     
     - name: pim447
-      remote: t0bybr
+      remote: Lee-Seokjeong
       revision: main
   self:
     path: config

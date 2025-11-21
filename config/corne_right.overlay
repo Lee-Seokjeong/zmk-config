@@ -48,6 +48,5 @@
          */
         int-gpios = <&gpio1 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         
-        automouse-layer = <2>; /* <-- 이 줄을 제거하거나 주석 처리하세요 */
-      };
+        };
 };

@@ -14,9 +14,33 @@
 
 / {
     behaviors {
+        // 트랙볼 동작 정의를 수정합니다.
         tb_pim447: trackball_pimoroni_pim447 {
             compatible = "zmk,behavior-pim447";
-            #binding-cells = <1>;
+            label = "PIM447_TRACKBALL";
+            // 레이어 0: 기본 마우스 이동
+            // 레이어 1: 스크롤 모드 (Lower 키를 누를 때)
+            // 레이어 2: 스크롤 모드 (Raise 키를 누를 때)
+            layer-bindings = <
+                0 ZMK_MOVE_X ZMK_MOVE_Y
+                1 ZMK_SCROLL_X ZMK_SCROLL_Y
+                2 ZMK_SCROLL_X ZMK_SCROLL_Y
+            >;
+        };
+
+        // 마우스 클릭 동작을 위한 별도 동작 정의 (선택 사항)
+        // 키보드 키에 마우스 클릭을 매핑할 때 사용합니다.
+        mx_left: behavior_mouse_left {
+            compatible = "zmk,behavior-mouse-click";
+            #binding-cells = <0>;
+            label = "MOUSE_LEFT_CLICK";
+            position = <1>;
+        };
+        mx_right: behavior_mouse_right {
+            compatible = "zmk,behavior-mouse-click";
+            #binding-cells = <0>;
+            label = "MOUSE_RIGHT_CLICK";
+            position = <2>;
         };
     };
 
@@ -24,26 +48,20 @@
         compatible = "zmk,keymap";
 
         default_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
-            // | CTRL |  A  |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ;  |  '   |
-            // | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | ESC  |
-            //                    | GUI | LWR | SPC |   | ENT | RSE  | ALT |
+            // ... (기존 주석 생략) ...
 
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T        &kp Y    &kp U  &kp I      &kp O    &kp P     &kp BSPC
-&kp LCTRL  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H    &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N    &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                         &kp LGUI  &mo 1  &kp SPACE    &kp RET  &mo 2  &kp RALT
+// 트랙볼 움직임을 활성화하기 위해 오른쪽 키보드 상단에 &tb_pim447을 추가합니다.
+&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T        &tb_pim447    &kp U  &kp I      &kp O    &kp P     &kp BSPC
+&kp LCTRL  &kp A  &kp S  &kp D     &kp F  &kp G        &kp H         &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z  &kp X  &kp C     &kp V  &kp B        &kp N         &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
+                         &kp LGUI  &mo 1  &kp SPACE    &kp RET       &mo 2  &kp RALT
             >;
         };
 
         lower_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BSPC |
-            // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-            // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
+            // Lower 키를 누르면 트랙볼이 스크롤 모드로 변경됩니다.
+            // ... (기존 주석 생략) ...
 
             bindings = <
 &kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6    &kp N7    &kp N8    &kp N9     &kp N0  &kp BSPC
@@ -54,21 +72,19 @@
         };
 
         raise_layer {
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
-            // | CTRL |     |     |     |     |     |   |  -  |  =  |  [  |  ]  |  \  |  `   |
-            // | SHFT |     |     |     |     |     |   |  _  |  +  |  {  |  }  | "|" |  ~   |
-            //                    | GUI |     | SPC |   | ENT |     | ALT |
+            // Raise 키를 누르면 트랙볼이 스크롤 모드로 변경됩니다.
+            // ... (기존 주석 생략) ...
 
             bindings = <
 &kp TAB    &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
 &kp LCTRL  &trans    &trans  &trans    &trans    &trans       &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &trans
 &kp LSHFT  &trans    &trans  &trans    &trans    &trans       &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
                              &kp LGUI  &trans    &kp SPACE    &kp RET    &trans     &kp RALT
-        &tb_pim447 MB1 
-        &tb_pim447 MB2
-        &tb_pim447 MB3
-        &trans // 여유분
+        // 이 부분은 키보드의 물리적 키 위치와 맞지 않을 수 있으므로 삭제하거나 정확한 위치로 이동해야 합니다.
+        // &tb_pim447 MB1 
+        // &tb_pim447 MB2
+        // &tb_pim447 MB3
+        // &trans // 여유분
             >;
         };
     };

@@ -6,13 +6,11 @@
 
 #include "corne.dtsi" 
 #include <dt-bindings/behavior_pim447.h>
-#include <dt-bindings/zmk/mouse.h> // keymap에 이미 포함되어 있을 수 있습니다.
-
+#include <dt-bindings/zmk/mouse.h> 
 
 &default_transform {
     col-offset = <6>;
-	trackball-sensor = <&pimoroni_pim447>; // 트랙볼 센서 연결 추가
-    // angle = <0>; // 필요시 각도 조절 (0, 90, 180, 270)
+    // angle = <0>; // 이 줄은 여기에 둘 수 있습니다.
 };
 
 &five_column_transform {
@@ -40,24 +38,26 @@
     
     /* PIM447 트랙볼 장치 정의 */
     pimoroni_pim447: pimoroni_pim447@a {
-        compatible = "pimoroni,pim447-trackball";
+        compatible = "pimoroni,pim447-trackball"; 
         status = "okay";
         reg = <0x0a>; /* PIM447의 기본 I2C 주소 0x0A */
 		
-        /* 
-         * INT 핀 설정: 
-         * (물리적으로 P1.07 핀에 연결해야 합니다.)
-         */
         int-gpios = <&gpio1 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
-		// automouse-layer = <2>; /* <-- 이 줄을 제거하거나 주석 처리하세요 */
         
-        };
+        // **이동 좌표 변환을 이 노드 내부로 옮깁니다.**
+        // 이 트랙볼이 어느 쪽에 있는지 지정합니다. 
+        // corne_right 쉴드이므로 right로 설정합니다.
+        mount-point = "right"; 
+        
+        // angle 속성도 여기에 포함될 수 있습니다 (필요시 주석 해제)
+        // angle = <0>; 
+    };
 };
 
 /* ZMK Behaviors와 트랙볼 장치 연결 */
 / {
     behaviors {
-        // 이 노드가 C 컴파일러가 찾던 'zmk_behavior_pim447'입니다.
+        // 이 노드는 키맵의 &tb_mode와는 다른, 하드웨어 연동을 위한 노드입니다.
         zmk_behavior_pim447: behavior_pim447 {
             compatible = "zmk,behavior-pim447";
             label = "PIM447_Behavior";

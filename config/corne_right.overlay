@@ -10,7 +10,7 @@
 
 &default_transform {
     col-offset = <6>;
-    // angle = <0>; // 이 줄은 여기에 둘 수 있습니다.
+    // angle = <0>;
 };
 
 &five_column_transform {
@@ -18,9 +18,6 @@
 };
 
 &kscan0 {
-    /* 
-     * Pro Micro 핀 번호를 사용하는 col-gpios 설정.
-     */
     col-gpios
         = <&pro_micro 14 GPIO_ACTIVE_HIGH>
         , <&pro_micro 15 GPIO_ACTIVE_HIGH>
@@ -36,20 +33,12 @@
     status = "okay";
     pinctrl-0 = <&i2c0_default>;
     
-    /* PIM447 트랙볼 장치 정의 */
     pimoroni_pim447: pimoroni_pim447@a {
         compatible = "pimoroni,pim447-trackball"; 
         status = "okay";
-        reg = <0x0a>; /* PIM447의 기본 I2C 주소 0x0A */
-		
+        reg = <0x0a>; 
         int-gpios = <&gpio1 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
-        
-        // **이동 좌표 변환을 이 노드 내부로 옮깁니다.**
-        // 이 트랙볼이 어느 쪽에 있는지 지정합니다. 
-        // corne_right 쉴드이므로 right로 설정합니다.
         mount-point = "right"; 
-        
-        // angle 속성도 여기에 포함될 수 있습니다 (필요시 주석 해제)
         // angle = <0>; 
     };
 };
@@ -57,11 +46,12 @@
 /* ZMK Behaviors와 트랙볼 장치 연결 */
 / {
     behaviors {
-        // 이 노드는 키맵의 &tb_mode와는 다른, 하드웨어 연동을 위한 노드입니다.
         zmk_behavior_pim447: behavior_pim447 {
             compatible = "zmk,behavior-pim447";
             label = "PIM447_Behavior";
             trackball = <&pimoroni_pim447>;
+            #binding-cells = <1>; // <-- 이 줄을 추가했습니다.
         };
     };
 };
+

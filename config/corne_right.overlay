@@ -25,7 +25,7 @@
     pimoroni_pim447: pimoroni_pim447@a {
         compatible = "zmk,pimoroni-pim447";
         status = "okay";
-        reg = <0x0a>;
+        reg = <0x0c>;
         int-gpios = <&gpio1 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         automouse-layer = <2>;
     };
@@ -36,7 +36,7 @@
         p447_rgb: p447_rgb_behavior {
             compatible = "zmk,behavior-pim447-led";
             label = "PIM447_LED_BEHAVIOR";
-            i2c = <&i2c0 0x0A>;
+            i2c = <&i2c0>; // 0x0A>;
 			#binding-cells = <1>; // LED 색상 값(0xFF0000)이 매개변수이므로 1
             };
 
@@ -44,7 +44,7 @@
             compatible = "zmk,behavior-pim447"; 
             label = "PIM447_MOVE_BEHAVIOR";
             // 이 동작에 필요한 추가 속성이 있다면 여기에 포함 (예: power-layer 등)
-			#binding-cells = <1>; // 매개변수가 없으므로 0
+			#binding-cells = <1>; // 매개변수가 없으므로 1
             };
 	 };
 };

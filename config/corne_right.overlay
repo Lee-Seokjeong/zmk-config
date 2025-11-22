@@ -16,21 +16,6 @@
 		;
 };
 
-/ {
-    pim447_listener: pim447_listener {
-    compatible = "zmk,input-listener";
-    status = "okay";
-    device = <&pimoroni_pim447>;
-    };
-};
-
-&kscan0 {
-    compatible = "zmk,kscan-mock";
-    columns = <0>;
-    rows = <0>;
-    events = <0>;
-};
-
 &i2c0 {
     status = "okay";
     clock-frequency = <I2C_BITRATE_FAST>;

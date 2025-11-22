@@ -4,18 +4,24 @@
  * SPDX-License-Identifier: MIT
  */
 
+/* corne.dtsi 파일을 포함하여 기본 Corne 하드웨어 정의를 가져옵니다. */
 #include "corne.dtsi" 
 #include <dt-bindings/behavior_pim447.h>
 #include <dt-bindings/zmk/mouse.h> 
 
+/* 
+ * 기본 키보드 변환(transform) 설정. 
+ * Corne Right는 오른쪽 halves이므로 col-offset을 <6>으로 설정하여 
+ * 6번째 열부터 시작하도록 합니다 (왼쪽 halves의 0~5열 다음).
+ */
 &default_transform {
     col-offset = <6>;
 };
 
-&five_column_transform {
-    col-offset = <6>;
-};
-
+/* 
+ * kscan0 (키 스캔 컨트롤러 0) 설정. 
+ * nice!nano v2의 Pro Micro 핀 번호를 사용하여 열(col) GPIO를 정의합니다.
+ */
 &kscan0 {
     col-gpios
         = <&pro_micro 14 GPIO_ACTIVE_HIGH>
@@ -27,29 +33,47 @@
         ;
 };
 
-/* I2C 컨트롤러 설정 */
+/* 
+ * I2C 컨트롤러 설정. 
+ * nice!nano v2의 기본 I2C 버스를 활성화하고 핀 설정을 가져옵니다.
+ */
 &pro_micro_i2c {
     status = "okay";
-    pinctrl-0 = <&i2c0_default>; // <-- 이 줄을 다시 사용합니다.
-    // pinctrl-gpios = <&pro_micro 30 GPIO_ACTIVE_HIGH>, <&pro_micro 31 GPIO_ACTIVE_HIGH>; // 이 줄은 제거합니다.
-    
+    /* nice!nano v2의 기본 I2C 핀 P0.30 (SCL), P0.31 (SDA)을 사용합니다. */
+    pinctrl-0 = <&i2c0_default>;
+
+    /* 
+     * PIM447 트랙볼 장치 정의 (노드 레이블: pimoroni_pim447)
+     * 이 레이블은 C 소스 코드(src/pimoroni_pim447.c)에서 사용됩니다.
+     */
     pimoroni_pim447: pimoroni_pim447@a {
-        compatible = "pimoroni,pim447-trackball"; 
+        /* 호환성 문자열은 드라이버 YAML 파일(zmk,pimoroni-pim447.yaml)과 일치해야 합니다. */
+        compatible = "zmk,pimoroni-pim447"; 
         status = "okay";
-        reg = <0x0a>; 
+        reg = <0x0a>; /* PIM447의 기본 I2C 주소 0x0A */
+		
+        /* 
+         * INT(인터럽트) 핀 설정. 
+         * 사용자가 물리적으로 P1.07 핀에 연결했다고 가정합니다.
+         */
         int-gpios = <&gpio1 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
-        mount-point = "right"; 
-        // angle = <0>; 
     };
 };
 
-/* ZMK Behaviors와 트랙볼 장치 연결 */
+/* 
+ * ZMK Behaviors (행동) 설정.
+ * 키맵에서 사용할 수 있는 트랙볼 관련 행동을 정의합니다.
+ */
 / {
     behaviors {
+        /* 
+         * zmk_behavior_pim447 노드 정의. 
+         * 이 노드는 드라이버 YAML 파일(zmk,behavior-pim447.yaml)과 일치합니다.
+         */
         zmk_behavior_pim447: behavior_pim447 {
             compatible = "zmk,behavior-pim447";
             label = "PIM447_Behavior";
-            #binding-cells = <1>; 
+            #binding-cells = <1>; /* YAML 파일에서 요구하는 필수 속성 */
         };
     };
 };

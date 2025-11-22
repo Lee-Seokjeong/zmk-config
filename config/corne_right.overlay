@@ -10,7 +10,6 @@
 
 &default_transform {
     col-offset = <6>;
-    // angle = <0>;
 };
 
 &five_column_transform {
@@ -49,9 +48,8 @@
         zmk_behavior_pim447: behavior_pim447 {
             compatible = "zmk,behavior-pim447";
             label = "PIM447_Behavior";
-            trackball = <&pimoroni_pim447>;
-            #binding-cells = <1>; // <-- 이 줄을 추가했습니다.
+            // trackball = <&pimoroni_pim447>; // <-- 이 줄을 제거했습니다.
+            #binding-cells = <1>; 
         };
     };
 };
-

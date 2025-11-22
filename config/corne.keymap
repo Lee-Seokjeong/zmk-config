@@ -37,8 +37,7 @@
          * behavior_pim447.c 파일에서 구현된 로직을 사용합니다.
          * 오버레이 파일의 'zmk_behavior_pim447' 노드를 참조합니다.
          */
-        pim447_hw_control: zmk_behavior_pim447 {};
-    };
+       };
 };
 
 / {

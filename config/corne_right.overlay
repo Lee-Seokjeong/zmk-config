@@ -11,6 +11,8 @@
 
 &default_transform {
     col-offset = <6>;
+	trackball-sensor = <&pimoroni_pim447>; // 트랙볼 센서 연결 추가
+    // angle = <0>; // 필요시 각도 조절 (0, 90, 180, 270)
 };
 
 &five_column_transform {
@@ -38,7 +40,7 @@
     
     /* PIM447 트랙볼 장치 정의 */
     pimoroni_pim447: pimoroni_pim447@a {
-        compatible = "zmk,pimoroni-pim447";
+        compatible = "pimoroni,pim447-trackball";
         status = "okay";
         reg = <0x0a>; /* PIM447의 기본 I2C 주소 0x0A */
 		
@@ -47,7 +49,19 @@
          * (물리적으로 P1.07 핀에 연결해야 합니다.)
          */
         int-gpios = <&gpio1 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
-		automouse-layer = <2>; /* <-- 이 줄을 제거하거나 주석 처리하세요 */
+		// automouse-layer = <2>; /* <-- 이 줄을 제거하거나 주석 처리하세요 */
         
         };
+};
+
+/* ZMK Behaviors와 트랙볼 장치 연결 */
+/ {
+    behaviors {
+        // 이 노드가 C 컴파일러가 찾던 'zmk_behavior_pim447'입니다.
+        zmk_behavior_pim447: behavior_pim447 {
+            compatible = "zmk,behavior-pim447";
+            label = "PIM447_Behavior";
+            trackball = <&pimoroni_pim447>;
+        };
+    };
 };

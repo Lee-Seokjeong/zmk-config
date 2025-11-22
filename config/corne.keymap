@@ -78,7 +78,7 @@
         layer_3 {
             bindings = <
 /* 마우스 버튼 및 모드 토글 */
-&trans                  &rgb_ug RGB_TOG     &rgb_ug RGB_HUI     &rgb_ug RGB_HUD     &rgb_ug RGB_SAI     &rgb_ug RGB_SAD             &mkp LCLK       &tb_mode <2>                 &mkp RCLK  &mkp MB1  &mkp MB2  &trans
+&trans                  &rgb_ug RGB_TOG     &rgb_ug RGB_HUI                   &rgb_ug RGB_HUD                  &rgb_ug RGB_SAI                   &rgb_ug RGB_SAD                     &mkp LCLK       &tb_mode <2>                 &mkp RCLK  &mkp MB1  &mkp MB2  &trans
 /* 고급 설정 예시 */
 &trans                  &pim447_hw_control <PIM447_MOUSE_INC_MAX_SPEED> &pim447_hw_control <PIM447_MOUSE_DEC_MAX_SPEED> &rgb_ug RGB_SPI                  &rgb_ug RGB_SPD                   &rgb_ug RGB_EFF                     &trans          &mkp MCLK                    &mkp MB3   &mkp MB4  &mkp MB5  &trans
 &trans                  &rgb_ug RGB_COLOR_HSB(0,93,49)  &rgb_ug RGB_COLOR_HSB(245,91,50)  &rgb_ug RGB_COLOR_HSB(60,97,53)  &rgb_ug RGB_COLOR_HSB(119,92,52)  &rgb_ug RGB_COLOR_HSB(301,88,49)    &mkp MCLK       &trans                       &trans     &trans    &trans    &trans

@@ -21,15 +21,7 @@
         tb_pim447: trackball_pimoroni_pim447 {
             compatible = "zmk,behavior-pim447";
             label = "PIM447_TRACKBALL";
-            // 레이어 0: 기본 마우스 이동
-            // 레이어 1: 스크롤 모드 (Lower 키를 누를 때)
-            // 레이어 2: 스크롤 모드 (Raise 키를 누를 때)
-            layer-bindings = <
-                0 ZMK_MOVE_X ZMK_MOVE_Y
-                1 ZMK_SCROLL_X ZMK_SCROLL_Y
-                2 ZMK_SCROLL_X ZMK_SCROLL_Y
-            >;
-        };
+             };
 
         // 마우스 클릭 동작을 위한 별도 동작 정의 (선택 사항)
         // 키보드 키에 마우스 클릭을 매핑할 때 사용합니다.

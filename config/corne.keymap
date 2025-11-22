@@ -22,20 +22,7 @@
             compatible = "zmk,behavior-pim447";
             label = "PIM447_TRACKBALL";
              };
-
-        // 마우스 클릭 동작을 위한 별도 동작 정의 (선택 사항)
-        // 키보드 키에 마우스 클릭을 매핑할 때 사용합니다.
-        mx_left: behavior_mouse_left {
-            compatible = "zmk,behavior-mouse-click";
-            #binding-cells = <0>;
-            label = "MOUSE_LEFT_CLICK";
-            position = <1>;
-        };
-        mx_right: behavior_mouse_right {
-            compatible = "zmk,behavior-mouse-click";
-            #binding-cells = <0>;
-            label = "MOUSE_RIGHT_CLICK";
-            position = <2>;
+       
         };
     };
 

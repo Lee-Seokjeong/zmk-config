@@ -16,16 +16,6 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
-    behaviors {
-            tb_mode: trackball_mode {
-            compatible = "zmk,behavior-trackball-mode";
-            #binding-cells = <1>; /* 인자 1개를 받음 (0=이동, 1=스크롤, 2=토글) */
-            default-mode = <0>;    /* 기본 모드는 마우스 이동 */
-        };
-     };
-};
-
-/ {
     keymap {
         compatible = "zmk,keymap";
 

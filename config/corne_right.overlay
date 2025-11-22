@@ -30,8 +30,13 @@
 /* I2C 컨트롤러 설정 */
 &pro_micro_i2c {
     status = "okay";
-    pinctrl-0 = <&i2c0_default>;
+    // pinctrl-0 = <&i2c0_default>; // 이 줄은 제거하거나 주석 처리
     
+    // nice!nano v2의 기본 I2C 핀을 강제 지정합니다 (P0.30/P0.31)
+    pinctrl-0 = <&i2c0_scl_p030_sda_p031>;
+    pinctrl-gpios = <&pro_micro 30 GPIO_ACTIVE_HIGH>, <&pro_micro 31 GPIO_ACTIVE_HIGH>;
+
+
     pimoroni_pim447: pimoroni_pim447@a {
         compatible = "pimoroni,pim447-trackball"; 
         status = "okay";
@@ -48,7 +53,6 @@
         zmk_behavior_pim447: behavior_pim447 {
             compatible = "zmk,behavior-pim447";
             label = "PIM447_Behavior";
-            // trackball = <&pimoroni_pim447>; // <-- 이 줄을 제거했습니다.
             #binding-cells = <1>; 
         };
     };

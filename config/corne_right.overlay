@@ -31,7 +31,7 @@
     events = <0>;
 };
 
-&pro_micro_i2c {
+&i2c0 {
     status = "okay";
     clock-frequency = <I2C_BITRATE_FAST>;
     // I2C_BITRATE_STANDARD   100000
@@ -41,51 +41,17 @@
         compatible = "zmk,pimoroni-pim447";
         status = "okay";
         reg = <0x0a>;
-        int-gpios = <&pro_micro 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+        int-gpios = <&gpio1 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         automouse-layer = <2>;
     };
 };
 
-&pinctrl {
-    i2c1_default: i2c1_default {
-        group1 {
-            psels = <NRF_PSEL(TWIM_SDA, 1, 00)>,
-                    <NRF_PSEL(TWIM_SCL, 0, 11)>;
-            bias-pull-up;
+/ {
+    behaviors {
+        p447_rgb: p447_rgb_behavior {
+            compatible = "zmk,behavior-pim447-led";
+            label = "PIM447_LED_BEHAVIOR";
+            i2c = <&i2c0 0x0A>; 
         };
-    };
-
-    i2c1_sleep: i2c1_sleep {
-        group1 {
-            psels = <NRF_PSEL(TWIM_SDA, 1, 00)>,
-                    <NRF_PSEL(TWIM_SCL, 0, 11)>;
-            low-power-enable;
-            bias-pull-up;
-        };
-    };
-};
-
-&i2c1 {
-    status = "okay";
-    clock-frequency = <I2C_BITRATE_FAST>;
-
-    compatible = "nordic,nrf-twi";
-    pinctrl-0 = <&i2c1_default>;
-    pinctrl-1 = <&i2c1_sleep>;
-    pinctrl-names = "default", "sleep";
-
-    oled: ssd1306@3c {
-        compatible = "solomon,ssd1306fb";
-        reg = <0x3c>;
-        width = <128>;
-        height = <64>;
-        segment-offset = <0>;
-        page-offset = <0>;
-        display-offset = <0>;
-        multiplex-ratio = <63>;
-        segment-remap;
-        com-invdir;
-        inversion-on;
-        prechargep = <0x22>;
     };
 };

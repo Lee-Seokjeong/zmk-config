@@ -92,3 +92,23 @@ RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)  RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10
         prechargep = <0x22>;
     };
 };
+
+#include <dt-bindings/behavior_pim447.h>
+
+/ {
+    behaviors {
+        tb_move: pim447_move_behavior {
+            compatible = "zmk,behavior-pim447";
+            label = "PIM447_MOVE_BEHAVIOR";
+            #binding-cells = <1>;
+            status = "disabled"; // 기본적으로 비활성화합니다.
+        };
+
+        p447_rgb: p447_rgb_behavior {
+            compatible = "zmk,behavior-pim447-led";
+            label = "PIM447_LED_BEHAVIOR";
+            #binding-cells = <1>;
+            status = "disabled";
+        };
+    };
+};

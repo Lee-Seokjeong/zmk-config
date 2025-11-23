@@ -5,6 +5,7 @@
  */
 
 #include "corne.dtsi"
+#include <dt-bindings/behavior_pim447.h>
 
 &kscan0 {
 	col-gpios
@@ -17,46 +18,27 @@
 		;
 };
 
-keymap {
-        compatible = "zmk,keymap";
-
-        default_layer {
-            bindings = <
-&kp CAPSLOCK    &kp Q  &kp W  &kp E     &kp R   &kp T        &kp Y    &kp U   &kp I      &kp O    &kp P     &kp BACKSPACE
-&kp LEFT_SHIFT  &kp A  &kp S  &kp D     &kp F   &kp G        &kp H    &kp J   &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LCTRL       &kp Z  &kp X  &kp C     &kp V   &kp B        &kp N    &kp M   &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                              &kp LGUI  &tog 1  &kp SPACE    &kp RET  &tog 2  &kp RALT
-            >;
+/ {
+    behaviors {
+        // 오른쪽 오버레이의 pim447_move_behavior와 동일한 라벨을 사용합니다.
+        tb_move: pim447_move_behavior {
+            compatible = "zmk,behavior-pim447";
+            label = "PIM447_MOVE_BEHAVIOR_DUMMY"; // 레이블은 달라야 합니다.
+            #binding-cells = <1>; // 오른쪽과 동일한 바인딩 셀 수 유지
         };
 
-        
-        lower_layer {
-            bindings = <
-&kp F1     &kp F2          &kp F3   &kp F4        &kp F5            &kp F6               &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9   &kp SLASH  &kp ASTERISK  &kp MINUS
-&kp F7     &kp F8          &kp F9   &kp F10       &kp F11           &kp F10              &kp NUMBER_4  &kp N5        &kp NUMBER_6   &kp BSLH   &kp EQUAL     &kp PLUS
-&kp LCTRL  &kp LEFT_SHIFT  &kp TAB  &kp GRAVE     &kp LEFT_BRACKET  &kp RIGHT_BRACKET    &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3   &kp DOT    &kp DELETE    &kp ENTER
-                                    &kp LEFT_ALT  &trans            &kp BSLH             &kp NUMBER_0  &trans        &kp BACKSPACE
-            >;
-        };
-
-        
-        raise_layer {
-            bindings = <
-&trans  &trans          &kp UP_ARROW       &kp PRINTSCREEN  &kp SCROLLLOCK  &kp K_PP          &bt BT_SEL 0       &bt BT_SEL 1    &bt BT_SEL 2     &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR
-&trans  &kp LEFT_ARROW  &kp DOWN_ARROW     &kp RIGHT_ARROW  &kp K_PREV      &kp K_NEXT        &kp PRINTSCREEN    &kp SCROLLLOCK  &kp PAUSE_BREAK  &trans        &trans        &kp PAGE_UP
-&trans  &kp K_MUTE      &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp END         &kp K_PREVIOUS    &kp INS            &kp HOME        &kp DELETE       &kp END       &trans        &kp PAGE_DOWN
-                                           &trans           &trans          &trans            &ext_power EP_OFF  &trans          &out OUT_TOG
-            >;
-        };
-
-        
-        layer_3 {
-            bindings = <
-/* 마우스 버튼 및 모드 토글 */
-&trans    &rgb_ug RGB_TOG                 &rgb_ug RGB_HUI                   &rgb_ug RGB_HUD                  &rgb_ug RGB_SAI                   &rgb_ug RGB_SAD                     &mkp LCLK       &trans        &mkp RCLK  &mkp MB1  &mkp MB2  &trans
-&trans    &trans                          &trans                            &rgb_ug RGB_SPI                  &rgb_ug RGB_SPD                   &rgb_ug RGB_EFF                     &trans          &mkp MCLK     &mkp MB3   &mkp MB4  &mkp MB5  &trans
-&trans    &rgb_ug RGB_COLOR_HSB(0,93,49)  &rgb_ug RGB_COLOR_HSB(245,91,50)  &rgb_ug RGB_COLOR_HSB(60,97,53)  &rgb_ug RGB_COLOR_HSB(119,92,52)  &rgb_ug RGB_COLOR_HSB(301,88,49)    &mkp MCLK       &trans        &trans     &trans    &trans    &trans
-                                                                            &mkp LCLK                        &trans                            &mkp RCLK                           &mkp LCLK       &trans        &mkp RCLK
-            >;    
+        // LED 동작도 더미로 정의할 수 있습니다.
+        p447_rgb: p447_rgb_behavior {
+            compatible = "zmk,behavior-pim447-led";
+            label = "PIM447_LED_BEHAVIOR_DUMMY";
+            i2c = <&i2c0 0x0A>; // I2C 주소는 동일하게 유지
+            #binding-cells = <1>;
+            status = "disabled"; // 이 동작은 비활성화합니다.
         };
     };
+
+    // 왼쪽에는 실제 I2C 하드웨어가 없으므로 비활성화 처리합니다.
+    &i2c0 {
+        status = "disabled";
+    };
+};

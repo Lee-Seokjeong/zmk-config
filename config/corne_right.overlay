@@ -44,7 +44,7 @@
             compatible = "zmk,behavior-pim447"; 
             label = "PIM447_MOVE_BEHAVIOR";
             // 이 동작에 필요한 추가 속성이 있다면 여기에 포함 (예: power-layer 등)
-			#binding-cells = <0>; // 매개변수가 없으므로 1
+			#binding-cells = <1>; // 매개변수가 없으므로 1
             };
 	 };
 };

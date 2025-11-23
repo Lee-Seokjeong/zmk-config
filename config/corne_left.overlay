@@ -18,27 +18,27 @@
 		;
 };
 
+// 최상위 노드에서 동작을 정의합니다.
 / {
     behaviors {
-        // 오른쪽 오버레이의 pim447_move_behavior와 동일한 라벨을 사용합니다.
+        // 오른쪽 오버레이와 동일한 라벨을 사용합니다.
         tb_move: pim447_move_behavior {
             compatible = "zmk,behavior-pim447";
-            label = "PIM447_MOVE_BEHAVIOR_DUMMY"; // 레이블은 달라야 합니다.
-            #binding-cells = <1>; // 오른쪽과 동일한 바인딩 셀 수 유지
+            label = "PIM447_MOVE_BEHAVIOR_DUMMY";
+            #binding-cells = <1>;
+            status = "disabled"; // 핵심: 이 동작은 비활성화합니다.
         };
 
-        // LED 동작도 더미로 정의할 수 있습니다.
         p447_rgb: p447_rgb_behavior {
             compatible = "zmk,behavior-pim447-led";
             label = "PIM447_LED_BEHAVIOR_DUMMY";
-            i2c = <&i2c0 0x0A>; // I2C 주소는 동일하게 유지
             #binding-cells = <1>;
-            status = "disabled"; // 이 동작은 비활성화합니다.
+            status = "disabled";
         };
     };
+};
 
-    // 왼쪽에는 실제 I2C 하드웨어가 없으므로 비활성화 처리합니다.
-    &i2c0 {
-        status = "disabled";
-    };
+// I2C0 하드웨어 자체는 비활성화하여 충돌을 막습니다.
+&i2c0 {
+    status = "disabled";
 };

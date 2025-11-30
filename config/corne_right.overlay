@@ -34,6 +34,6 @@
         /* Optional axis inversion */
         invert-x;  /* Uncomment to invert X axis */
         /* invert-y; */  /* Uncomment to invert Y axis */
-        int-gpios = <&gpio1 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+        /* int-gpios = <&gpio1 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>; */
         };
 };

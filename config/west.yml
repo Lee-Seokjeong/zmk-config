@@ -2,8 +2,8 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: Lee-Seokjeong
-      url-base: https://github.com/Lee-Seokjeong
+    - name: mwandzik
+      url-base: https://github.com/mwandzik
    
   projects:
     - name: zmk
@@ -11,8 +11,8 @@ manifest:
       revision: main
       import: app/west.yml
     
-    - name: pim447
-      remote: Lee-Seokjeong
+    - name: zmk-driver-pim447
+      remote: mwandzik
       revision: main
   self:
     path: config
